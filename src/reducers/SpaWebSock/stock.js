@@ -1,4 +1,5 @@
 import types from '../../action_types';
+import { dateTimeAgo } from './utils';
 
 const initialStockState = {
   name: '',
@@ -16,7 +17,7 @@ const resultStockReducer = (state = initialStockState, action) => {
         name,
         value,
         time,
-        timeAgo: '',
+        timeAgo: dateTimeAgo(time),
       };
     }
     default:

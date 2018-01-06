@@ -14,7 +14,7 @@ const stockDecorator = (base = baseStock, payload) => ({
   ...base,
   value: roundTo(payload[1]) || null,
   name: (payload[0] && payload[0].toUpperCase()) || '',
-  time: new Date() / 1,
+  time: new Date().getTime(),
 });
 
 export default (base = undefined, payload = {}) => {
