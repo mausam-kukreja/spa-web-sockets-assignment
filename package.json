@@ -23,6 +23,7 @@
     "redux": "^3.7.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-testkit": "^1.0.6",
+    "moment": "2.18.1",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.1.1"
   },

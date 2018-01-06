@@ -1,3 +1,3 @@
-import onAppInit from './onAppInit';
+import onStockUpdate from './onStockUpdate';
 
-export { onAppInit };
+export default onStockUpdate;
