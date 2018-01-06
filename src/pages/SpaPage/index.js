@@ -4,7 +4,7 @@ import Websocket from 'react-websocket';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import onStockUpdate from '../../actions';
-import s from './styles';
+import { StockList } from '../../components';
 
 class SpaPage extends React.PureComponent {
   constructor(props) {
@@ -16,19 +16,29 @@ class SpaPage extends React.PureComponent {
     this.props.onStockUpdate({ data: JSON.parse(data) });
   }
 
-  renderStockItem() {}
-
   render() {
     return (
       <div>
         <Websocket url="ws://stocks.mnet.website/" onMessage={this.handleUpdateMessage} />
+        {this.props.results.stocks &&
+          this.props.results.stocks.length &&
+          <StockList loading={this.props.loading} results={this.props.results} />}
       </div>
     );
   }
 }
 
 SpaPage.propTypes = {
-  results: PropTypes.shape({}).isRequired,
+  results: PropTypes.shape({
+    stocks: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+        time: PropTypes.number.isRequired,
+        timeAgo: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+  }).isRequired,
   loading: PropTypes.bool.isRequired,
   onStockUpdate: PropTypes.func.isRequired,
 };
