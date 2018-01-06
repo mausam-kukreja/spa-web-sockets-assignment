@@ -2,15 +2,49 @@
   "name": "spa-web-sockets-assignment",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=8.6.0",
+    "yarn": ">=1.0.1"
+  },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "axios": "^0.16.2",
+    "cookie": "^0.3.1",
+    "css-animation": "^1.4.1",
+    "prop-types": "^15.5.10",
+    "qs": "^6.5.0",
+    "react": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "1.0.13",
+    "react-test-renderer": "^15.6.1",
+    "redux": "^3.7.1",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-testkit": "^1.0.6",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.1.1"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.9.0",
+    "eslint": "4.4.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "2.3.0",
+    "eslint-config-react-app": "^2.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "2.1.2",
+    "eslint-plugin-react": "^7.2.0",
+    "prettier": "1.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "build:ci": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --maxWorkers=3",
+    "test:ci": "CI=true react-scripts test --env=jsdom --maxWorkers=2",
+    "lint": "eslint src",
+    "lint:ci": "eslint src --max-warnings 0",
+    "fix": "eslint --fix src",
+    "q": "eslint --quiet --fix src/index.js $(git diff --cached --name-only --diff-filter=d HEAD | grep .js$)"
   }
 }
