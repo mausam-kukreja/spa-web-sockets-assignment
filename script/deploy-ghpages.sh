@@ -4,7 +4,7 @@ set -e
 pwd
 
 remote=$(git config remote.origin.url)
-echo "$GH_EMAIL"
+echo "${GH_EMAIL}"
 # make a directory to put the gp-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
