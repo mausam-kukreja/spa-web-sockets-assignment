@@ -10,6 +10,8 @@
     "axios": "^0.16.2",
     "cookie": "^0.3.1",
     "css-animation": "^1.4.1",
+    "gh-pages": "^1.1.0",
+    "moment": "2.18.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "react": "^15.6.1",
@@ -23,7 +25,6 @@
     "redux": "^3.7.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-testkit": "^1.0.6",
-    "moment": "2.18.1",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.1.1"
   },
@@ -42,6 +43,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "build:ci": "react-scripts build",
     "test": "react-scripts test --env=jsdom --maxWorkers=3",
     "test:ci": "CI=true react-scripts test --env=jsdom --maxWorkers=2",
@@ -49,5 +51,6 @@
     "lint:ci": "eslint src --max-warnings 0",
     "fix": "eslint --fix src",
     "q": "eslint --quiet --fix src/index.js $(git diff --cached --name-only --diff-filter=d HEAD | grep .js$)"
-  }
+  },
+  "homepage": "https://mausam-kukreja.github.io/spa-web-sockets-assignment"
 }
