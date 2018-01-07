@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.6
+    working_directory: ~/spa-web-sockets-assignment
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ arch }}-{{ checksum "yarn.lock" }}-{{ checksum "package.json" }}
+      - run:
+          name: Install deps
+          command: |
+            python --version
+            cp yarn.lock orig-yarn-lock-file
+            yarn
+            yarn cache dir
+      - save_cache:
+          key: v1-dependencies-{{ arch }}-{{ checksum "orig-yarn-lock-file" }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Lint
+          command: yarn lint:ci
+      - run:
+          name: Build
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              yarn build:ci
+            fi
