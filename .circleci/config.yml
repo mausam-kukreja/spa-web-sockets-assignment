@@ -31,5 +31,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              scripts/deploy-ghpages.sh
+              script/deploy-ghpages.sh
             fi
