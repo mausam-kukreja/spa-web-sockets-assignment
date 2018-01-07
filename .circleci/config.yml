@@ -30,7 +30,7 @@ jobs:
             fi
       - run:
           name: Avoid hosts unknown for github
-          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+          command: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
