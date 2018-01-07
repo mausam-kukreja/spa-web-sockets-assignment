@@ -1,5 +1,3 @@
-/* eslint camelcase: 0 */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import StockItem from './StockItem';
@@ -15,6 +13,9 @@ class StockList extends React.PureComponent {
   }
 
   render() {
+    if (this.props.loading || !this.props.results.stocks || !this.props.results.stocks.length) {
+      return <div>Please wait its loading....</div>;
+    }
     return (
       <div>
         <StockItem key={'default'} />
@@ -35,6 +36,7 @@ StockList.propTypes = {
       }),
     ).isRequired,
   }).isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default StockList;

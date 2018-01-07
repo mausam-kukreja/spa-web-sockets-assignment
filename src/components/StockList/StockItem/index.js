@@ -1,5 +1,3 @@
-/* eslint camelcase: 0 */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from '../styles';
