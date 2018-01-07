@@ -9,10 +9,10 @@ remote=$(git config remote.origin.url)
 mkdir gh-pages-branch
 cd gh-pages-branch
 # now lets setup a new repo so we can update the gh-pages branch
-git config --global user.email "mausam.kukreja@gmail.com"
-git config --global user.name "mausam.kukreja"
-git init
-git remote add --fetch origin "${remote}"
+git config --global user.email "mausam.kukreja@gmail.com" > /dev/null 2>&1
+git config --global user.name "mausam.kukreja" > /dev/null 2>&1
+git init > /dev/null 2>&1
+git remote add --fetch origin "${remote}" > /dev/null 2>&1
 
 # switch into the the gh-pages branch
 if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
