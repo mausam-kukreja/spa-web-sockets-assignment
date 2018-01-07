@@ -4,8 +4,6 @@ set -e
 pwd
 
 remote=$(git config remote.origin.url)
-myRemote="${remote%.*}"
-myRemote="${myRemote}-demo.git"
 
 siteSource="$1"
 
@@ -22,7 +20,7 @@ cd gh-pages-branch
 git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
 git config --global user.name "$GH_NAME" > /dev/null 2>&1
 git init
-git remote add --fetch origin "${myRemote}"
+git remote add --fetch origin "${remote}"
 
 # switch into the the gh-pages branch
 if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
@@ -41,7 +39,7 @@ cp -a "../${siteSource}/build/." .
 # stage any changes and new files
 git add -A
 # now commit, ignoring branch gh-pages doesn't seem to work, so trying skip
-git commit --allow-empty -m "Deploy to GitHub pages to ${myRemote} [ci skip]"
+git commit --allow-empty -m "Deploy to GitHub pages to ${remote} [ci skip]"
 # and push, but send any output to /dev/null to hide anything sensitive
 git push --force --quiet origin gh-pages > /dev/null 2>&1
 
