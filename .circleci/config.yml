@@ -31,5 +31,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              yes | sudo bash script/deploy-ghpages.sh "${GH_EMAIL}" "${GH_NAME}" 
+              sudo bash script/deploy-ghpages.sh "${GH_EMAIL}" "${GH_NAME}" spa-web-sockets-assignment "${GH_PASS}" 
             fi
