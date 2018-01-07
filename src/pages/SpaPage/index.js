@@ -19,7 +19,7 @@ class SpaPage extends React.PureComponent {
   render() {
     return (
       <div>
-        <Websocket url="ws://stocks.mnet.website/" onMessage={this.handleUpdateMessage} />
+        <Websocket url="wss://stocks.mnet.website:443" onMessage={this.handleUpdateMessage} />
         {this.props.results.stocks &&
           this.props.results.stocks.length &&
           <StockList loading={this.props.loading} results={this.props.results} />}
