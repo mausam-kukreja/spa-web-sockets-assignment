@@ -28,3 +28,8 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn build:ci
             fi
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              scripts/deploy-ghpages.sh
+            fi

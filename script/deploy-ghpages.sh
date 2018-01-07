@@ -5,20 +5,12 @@ pwd
 
 remote=$(git config remote.origin.url)
 
-siteSource="$1"
-
-if [ ! -d "$siteSource" ]
-then
-    echo "Usage: $0 <site source dir>"
-    exit 1
-fi
-
 # make a directory to put the gp-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
 # now lets setup a new repo so we can update the gh-pages branch
-git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
-git config --global user.name "$GH_NAME" > /dev/null 2>&1
+git config --global user.email "mausam.kukreja@gmail.com"
+git config --global user.name "mausam.kukreja"
 git init
 git remote add --fetch origin "${remote}"
 
@@ -34,12 +26,12 @@ else
 fi
 
 # copy over or recompile the new site
-cp -a "../${siteSource}/build/." .
+cp -a "../build/." .
 
 # stage any changes and new files
 git add -A
 # now commit, ignoring branch gh-pages doesn't seem to work, so trying skip
-git commit --allow-empty -m "Deploy to GitHub pages to ${remote} [ci skip]"
+git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
 # and push, but send any output to /dev/null to hide anything sensitive
 git push --force --quiet origin gh-pages > /dev/null 2>&1
 
