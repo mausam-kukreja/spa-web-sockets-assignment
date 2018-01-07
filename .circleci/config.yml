@@ -28,11 +28,8 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn build:ci
             fi
-      - run:
-          name: Avoid hosts unknown for github
-          command: ssh -o StrictHostKeyChecking=no github.com
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              sudo bash script/deploy-ghpages.sh
+              "yes" | sudo bash script/deploy-ghpages.sh
             fi
