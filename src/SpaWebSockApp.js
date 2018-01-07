@@ -9,7 +9,6 @@ class SpaWebSockApp extends React.PureComponent {
       <s.SpaWebSockApp>
         <s.Content>
           <s.Main>
-            test Text
             {this.props.children}
           </s.Main>
         </s.Content>

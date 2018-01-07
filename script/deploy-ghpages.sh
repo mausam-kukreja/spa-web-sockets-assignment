@@ -4,12 +4,6 @@ set -e
 pwd
 
 remote="https://$2:$4@github.com/$2/$3.git"
-
-echo "$1"
-echo "$2"
-echo "$3"
-echo "$4"
-echo "${remote}"
 # make a directory to put the gp-pages branch
 mkdir gh-pages-branch
 cd gh-pages-branch
