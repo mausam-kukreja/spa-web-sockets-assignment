@@ -20,7 +20,7 @@ cd gh-pages-branch
 git config --global user.email "$GH_EMAIL" > /dev/null 2>&1
 git config --global user.name "$GH_NAME" > /dev/null 2>&1
 git init
-git remote add --fetch origin "$remote"
+git remote add --fetch origin "${remote}-demo2"
 
 # switch into the the gh-pages branch
 if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
@@ -34,7 +34,7 @@ else
 fi
 
 # copy over or recompile the new site
-cp -a "../${siteSource}/." .
+cp -a "../${siteSource}/build/." .
 
 # stage any changes and new files
 git add -A
